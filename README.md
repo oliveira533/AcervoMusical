@@ -24,7 +24,15 @@
   <li>
   <h3>Teoria das cores</h3>
   <p>Essa teoria se baseia no estudo das luzes e como elas nos afetam, fazendo com que tomemos decisões por conta delas. Como por exemplo reconsiderarmos executar alguma ação em um sistema por aparecer a cor vermelha, que é normalment associada a sensação de alerta.</p>
-  <p>Tendo isso em vista para a escolha de paleta de cores utilizei o azul(tranquilidade e harmonia) e o cinza(Neutralidade e estabilidade) como cores principais</p>
+  <p>Tendo isso em vista para a escolha de paleta de cores utilizei o azul(tranquilidade e harmonia) e o cinza(Neutralidade e estabilidade) como cores principais.</p>
   </li>
 
 </ul>
+
+## Tecnologias 📚
+<ul>
+  <li>React <img align="center" height="20" width="30" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg"></li>
+  <li>NodeJS <img align="center" height="20" width="30" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg"></li>
+  <li>MySQL <img align="center" height="20" width="30" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg"></li>
+</ul>
+
