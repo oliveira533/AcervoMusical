@@ -2,7 +2,7 @@
 
 ## Sobre 🔰
 
-### Esse é um projeto é uma evolução de um projeto escolar que foi desnvolvido com PHP e em grupo. </br>A ideia desse projeto é uma plataforma na qual o usuário pode buscar músicas, albuns, artistas e bandas. </br> Tenho como objetivo principal desenvolver um algoritmo de busca robusto e um sistema de recomendação funcional.
+### Esse é um projeto é uma evolução de um projeto escolar que foi desnvolvido com PHP, desta vez irei desenvolver utilizando React e Node além de respeitar regras de design. </br>A ideia desse projeto é uma plataforma na qual o usuário pode buscar músicas, albuns, artistas e bandas. </br> Tenho como objetivo principal desenvolver um algoritmo de busca robusto e um sistema de recomendação funcional.
 
 ## Design 🖋️
 
@@ -19,7 +19,12 @@
   Na plataforma podemos ver affordance na barra de navegação onde eu utilizei como base o spotify(a maior plataforma de stremming de música do mundo).</br>
   É possível identificar affordence na exibição de conteúdo em formato de streming no qual eu me baseei na netflix.</br>
   </p>
-  <img src="https://github.com/oliveira533/AcervoMusica/blob/main/design/2%20-%20Inicial%20Logon.png?raw=true" style="width:50%;"/> 
+  </li>
+  
+  <li>
+  <h3>Teoria das cores</h3>
+  <p>Essa teoria se baseia no estudo das luzes e como elas nos afetam, fazendo com que tomemos decisões por conta delas. Como por exemplo reconsiderarmos executar alguma ação em um sistema por aparecer a cor vermelha, que é normalment associada a sensação de alerta.</p>
+  <p>Tendo isso em vista para a escolha de paleta de cores utilizei o azul(tranquilidade e harmonia) e o cinza(Neutralidade e estabilidade) como cores principais</p>
   </li>
 
 </ul>
