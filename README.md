@@ -17,8 +17,9 @@
   </p>
   <p>
   Na plataforma podemos ver affordance na barra de navegação onde eu utilizei como base o spotify(a maior plataforma de stremming de música do mundo).</br>
-  <img src="https://github.com/oliveira533/AcervoMusica/blob/main/design/2%20-%20Inicial%20Logon.png?raw=true" style="width:50%;"/>
-  </p>  
+  É possível identificar affordence na exibição de conteúdo em formato de streming no qual eu me baseei na netflix.</br>
+  </p>
+  <img src="https://github.com/oliveira533/AcervoMusica/blob/main/design/2%20-%20Inicial%20Logon.png?raw=true" style="width:50%;"/> 
   </li>
 
 </ul>
