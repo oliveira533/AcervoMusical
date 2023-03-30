@@ -36,3 +36,8 @@
   <li>MySQL <img align="center" height="20" width="30" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg"></li>
 </ul>
 
+## Gestão
+<p>
+  O projeto vai ser gerido utilizando as sprints do Scrum e a organização do de entrega do kanaban
+</p>
+
