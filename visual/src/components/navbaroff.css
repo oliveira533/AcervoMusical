@@ -1,0 +1,22 @@
+.icon-user{
+    width: 75px;
+    height: 75px;
+    border: solid #9A97AB 6px;
+    border-radius: 50%;
+}
+.nav{
+    padding-top: 30px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    width: 15vw;
+}
+.user{
+    width: 90%;
+    border-bottom: solid #9A97ABa0 1px;
+}
+.list{
+    list-style: none;
+}
