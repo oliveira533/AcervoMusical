@@ -1,0 +1,12 @@
+.carrousel{
+    width: 95%;
+    margin: 45px;
+    height: 100%;
+}
+.slide{
+    margin: 5px;
+    text-align: center;
+    width: 95%;
+    height: 20vh;
+    border-radius: 20%;
+}
