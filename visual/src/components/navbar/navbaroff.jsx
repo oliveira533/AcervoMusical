@@ -1,5 +1,5 @@
 import React from 'react';
-import '../colors.css'
+import '../../colors.css'
 import './navbaroff.css';
 import { FaUser  } from "react-icons/fa";
 import { FiLogOut  } from "react-icons/fi";
