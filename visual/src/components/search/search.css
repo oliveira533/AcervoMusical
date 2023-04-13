@@ -1,9 +1,10 @@
 .body{
+    padding-top: 20px;
     margin-left: 15vw;
     width: 95%;
     height: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
     flex-direction: column;
 }

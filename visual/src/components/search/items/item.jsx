@@ -5,7 +5,7 @@ import '../../../colors.css'
 function ItemSearch(){
     return(
         <div className="sec-color font-color item">
-            <img src="#" alt="" />
+            <img src="#" alt="" className="image" />
         </div>
     )
 }
