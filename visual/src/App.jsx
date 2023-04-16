@@ -10,7 +10,7 @@ function App() {
     <div className="App main-color">
       <NavIn/>
       <main>
-        <Search/>
+        <MainOff/>
       </main>
     </div>
   );
