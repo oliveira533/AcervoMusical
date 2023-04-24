@@ -7,7 +7,16 @@ function Favorite(){
         <div className='main font-color'>
             <h1 className='size'>Seus artistas favoritos.</h1>
             <p className='size'>Confira os artistas que você marcou como favorito</p>
-            <div>
+            <div className='wrap'>
+                <Item/>
+                <Item/>
+                <Item/>
+                <Item/>
+                <Item/>
+                <Item/>
+                <Item/>
+                <Item/>
+                <Item/>
                 <Item/>
             </div>
         </div>
