@@ -1,4 +1,5 @@
 .App{
+  display: inline-block;
   height: 100vh;
   width: 100vw;
 }
@@ -11,8 +12,4 @@
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: #020012;
-}
-main{
-  margin-left: 17vw;
-  width: 87vw;
 }
