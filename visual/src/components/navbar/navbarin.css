@@ -7,7 +7,7 @@
 .nav{
     padding-top: 30px;
     padding-left: 10px;
-    width: 15vw;
+    min-width: 15vw;
 }
 .user{
     width: 90%;

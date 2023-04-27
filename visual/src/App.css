@@ -4,20 +4,19 @@
   height: 100vh;
   width: 100vw;
 }
+
+.main{
+  display: block;
+}
+
 /* width */
 ::-webkit-scrollbar {
   width: 10px;
+  height: 100%;
   background: #181624;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: #020012;
-}
-.nav{
-  width: 15vw;
-}
-
-.main{
-  width: 85%;
 }
