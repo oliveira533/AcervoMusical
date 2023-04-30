@@ -19,4 +19,9 @@
 }
 .txb{
     width: 90%;
+    padding: 5px;
+    font-size: 25px;
+}
+.txb:focus{
+    outline: none;
 }
