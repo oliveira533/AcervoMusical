@@ -1,7 +1,7 @@
 import './App.css';
 import './colors.css';
-import MainIn from './components/main/main';
-import NavIn from './components/navbar/navbarin.jsx';
+import {MainIn} from './components/main/main';
+import {NavIn , NavOff} from './components/navbar/navbar.jsx';
 
 function App() {
   return (
