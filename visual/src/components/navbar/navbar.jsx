@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../colors.css'
-import './navbarin.css';
+import './navbar.css';
 import { FaUser  } from "react-icons/fa";
 import { FiLogOut  } from "react-icons/fi";
 import { RiHome4Fill  } from "react-icons/ri";

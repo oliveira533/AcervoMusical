@@ -1,0 +1,22 @@
+.content{
+    width: 100%;
+}
+.background{
+    background: 0;
+    border: 0;
+    height: 30px;
+}
+.search{
+    width: 40%;
+    border-radius: 20px;
+    display: flex;
+    justify-content: flex-start;
+}
+.img{
+    height: 30px;
+    border: 0;
+    cursor: pointer;
+}
+.txb{
+    width: 90%;
+}
