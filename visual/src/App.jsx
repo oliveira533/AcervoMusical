@@ -10,7 +10,7 @@ function App() {
   return (
     <div className="App main-color">
       <NavIn className="nav"/>
-      <Profile/>
+      <MainIn/>
     </div>
   );
 }

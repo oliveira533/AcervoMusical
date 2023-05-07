@@ -20,11 +20,14 @@
 }
 .txa{
     min-width: 100%;
-    min-height: 50%;
+    min-height: 250px;
     max-width: 100%;
     max-height: 250px;
     border-radius: 20px;
     background: #9A97AB;
     padding: 10px;
     font-size: 20px;
+}
+.txa:focus{
+    outline: none;
 }
