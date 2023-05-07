@@ -23,6 +23,7 @@ export function Conf(){
                 <label className='font-color'>Senha nova</label><br/>
                 <input className='btn-color2 password' type="password" />
             </div>
+            <button className="button btn-color1 font-color">Salvar</button>
         </div>
     );
 };
