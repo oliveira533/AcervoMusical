@@ -5,12 +5,13 @@ import { NavIn , NavOff } from './components/navbar/navbar';
 import { Search } from './components/search/search';
 import { Fav } from './components/favorite/favorite';
 import { Profile } from './components/profile/profile';
+import { Conf } from './components/config/config';
 
 function App() {
   return (
     <div className="App main-color">
       <NavIn className="nav"/>
-      <MainIn/>
+      <Conf/>
     </div>
   );
 }
