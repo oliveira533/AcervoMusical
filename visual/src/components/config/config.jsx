@@ -16,6 +16,13 @@ export function Conf(){
                 <label className='font-color'>Telefone</label><br/>
                 <input type="tel" className='main-color font-color' placeholder='(XX) XXXXX-XXXX' pattern="\([0-9]{2}\) [0-9]{4}-[0-9]{4}" required />
             </div>
+            <div className='password'>
+                <h2 className='font-color'>Suas informações</h2>
+                <label className='font-color'>Senha antiga</label><br/>
+                <input className='btn-color2 password' type='password'/><br/><br/>
+                <label className='font-color'>Senha nova</label><br/>
+                <input className='btn-color2 password' type="password" />
+            </div>
         </div>
     );
 };
