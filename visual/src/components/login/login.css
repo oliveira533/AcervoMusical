@@ -1,13 +1,13 @@
-.container{
+.container-log{
     width: 100vw;
-    height: 100%;
+    height: 100vh;
     background: #181624a6;
     position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.form{
+.form-log{
     width: 40vw;
     height: 50vh;
     display: flex;

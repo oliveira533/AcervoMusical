@@ -4,8 +4,8 @@ import '../../colors.css';
 
 export function Log(){
     return(
-        <div className="container">
-            <div className="form sec-color font-color">
+        <div className="container-log">
+            <div className="form-log sec-color font-color">
                 <div className="box">
                     <label>Email</label><br/>
                     <input className="btn-color2" placeholder="example@email.com" type="emai"/>

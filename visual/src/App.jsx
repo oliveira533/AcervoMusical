@@ -14,7 +14,7 @@ function App() {
     <div className="App main-color">
       <NavIn className="nav"/>
       <MainIn/>
-      <LogOut/>
+      <Log/>
     </div>
   );
 }
