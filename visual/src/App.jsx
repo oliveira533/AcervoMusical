@@ -6,14 +6,15 @@ import { Search } from './components/search/search';
 import { Fav } from './components/favorite/favorite';
 import { Profile } from './components/profile/profile';
 import { Conf } from './components/config/config';
-import { Log } from './components/login/login'
+import { Log } from './components/login/login';
+import { LogOut } from './components/logout/logout';
 
 function App() {
   return (
     <div className="App main-color">
       <NavIn className="nav"/>
       <MainIn/>
-      <Log/>
+      <LogOut/>
     </div>
   );
 }

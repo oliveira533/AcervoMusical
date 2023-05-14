@@ -4,7 +4,7 @@ import '../../colors.css';
 
 export function Log(){
     return(
-        <div className="contentainer">
+        <div className="container">
             <div className="form sec-color font-color">
                 <div className="box">
                     <label>Email</label><br/>

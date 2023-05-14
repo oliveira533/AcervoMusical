@@ -1,6 +1,6 @@
-.contentainer{
+.container{
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     background: #181624a6;
     position: absolute;
     display: flex;
@@ -44,5 +44,7 @@ input{
     padding: 5px;
 }
 .link{
-    color: #9A97AB;
+    color: #288b9c;
+    font-weight: bold;
+    text-decoration: none;
 }

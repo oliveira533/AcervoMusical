@@ -1,0 +1,26 @@
+.container{
+    width: 100vw;
+    min-height: 100vh;
+    height: auto;
+    background: #181624a6;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form{
+    width: 40vw;
+    height: 20vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 20px;
+    padding: 10px;
+}
+label{
+    width: 90%;
+}
+.btn{
+    width: 50%;
+}
