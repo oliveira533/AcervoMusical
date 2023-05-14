@@ -1,6 +1,6 @@
 import React from "react";
-import './main.css'
-import '../../colors.css'
+import './main.css';
+import '../../colors.css';
 import Item from "./item/item.jsx";
 
 export function MainIn(){
