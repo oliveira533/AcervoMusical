@@ -8,13 +8,14 @@ import { Profile } from './components/profile/profile';
 import { Conf } from './components/config/config';
 import { Log } from './components/login/login';
 import { LogOut } from './components/logout/logout';
+import { Art } from './components/artist/artist';
 
 function App() {
   return (
     <div className="App main-color">
       <NavIn className="nav"/>
-      <MainIn/>
-      <LogOut/>
+      {/* <MainIn/> */}
+      <Art/>
     </div>
   );
 }
