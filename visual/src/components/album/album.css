@@ -2,7 +2,7 @@
     margin: 0;
     width: 100%;
 }
-.art-title{
+.alb-title{
     display: flex;
     justify-content: flex-end;
     flex-direction: column;
@@ -16,10 +16,10 @@
 .follows{
     margin: 0;
 }
-.art-list{
+.alb-list{
     list-style: none;
     font-size: 25px;
 }
-.art-item{
+.alb-item{
     margin: 8px;
 }

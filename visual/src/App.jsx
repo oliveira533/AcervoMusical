@@ -9,13 +9,14 @@ import { Conf } from './components/config/config';
 import { Log } from './components/login/login';
 import { LogOut } from './components/logout/logout';
 import { Art } from './components/artist/artist';
+import { Alb } from './components/album/album';
 
 function App() {
   return (
     <div className="App main-color">
       <NavIn className="nav"/>
       {/* <MainIn/> */}
-      <Art/>
+      <Alb/>
     </div>
   );
 }

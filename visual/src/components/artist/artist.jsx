@@ -9,6 +9,29 @@ export function Art(){
                 <h1 className='band'>Nome da banda</h1>
                 <h2 className='follows'>XXXX Seguidores</h2>
             </div>
+            <ul className='art-list font-color'>
+               <li><img src="#" className='art-item'/> Album1</li>
+               <li><img src="#" className='art-item'/> Album1</li>
+               <li><img src="#" className='art-item'/> Album1</li>
+               <li><img src="#" className='art-item'/> Album1</li>
+               <li><img src="#" className='art-item'/> Album1</li>
+               <li><img src="#" className='art-item'/> Album1</li>
+               <li><img src="#" className='art-item'/> Album1</li>
+               <li><img src="#" className='art-item'/> Album1</li>
+               <li><img src="#" className='art-item'/> Album1</li>
+               <li><img src="#" className='art-item'/> Album1</li>
+               <li><img src="#" className='art-item'/> Album1</li>
+               <li><img src="#" className='art-item'/> Album1</li>
+               <li><img src="#" className='art-item'/> Album1</li>
+               <li><img src="#" className='art-item'/> Album1</li>
+               <li><img src="#" className='art-item'/> Album1</li>
+               <li><img src="#" className='art-item'/> Album1</li>
+               <li><img src="#" className='art-item'/> Album1</li>
+               <li><img src="#" className='art-item'/> Album1</li>
+               <li><img src="#" className='art-item'/> Album1</li>
+               <li><img src="#" className='art-item'/> Album1</li>
+               <li><img src="#" className='art-item'/> Album1</li>
+            </ul>
         </div>
     )
 }
