@@ -81,7 +81,7 @@ CREATE TABLE TRACK(
 )
 
 
-/* Comando para criação da tabela de multiplos com chave estrangeira para as tabelas de música, banda, artista e album */
+/* Comando para criação da tabela de multiplos generos com chave estrangeira para as tabelas de música, banda, artista e album */
 CREATE TABLE MULTIGEN(
   MTGSOND INT NOT NULL,
   MTGGENDER INT NOT NULL,
@@ -90,4 +90,15 @@ CREATE TABLE MULTIGEN(
   FOREIGN KEY(MTGSOND) REFERENCES BAND(BNDID),
   FOREIGN KEY(MTGSOND) REFERENCES MUSIC(MSCID),
   FOREIGN KEY(MTGGENDER) REFERENCES GENDER(GENID)
+);
+
+/* Comando para criação da tabela de seguidores */
+CREATE TABLE FOLLOW(
+  FLWUSER INT NOT NULL,
+  FLWARTIST INT NOT NULL,
+  FOREIGN KEY(FLWARTIST) REFERENCES ALBUM(ALBID),
+  FOREIGN KEY(FLWARTIST) REFERENCES ARTIST(ARTID),
+  FOREIGN KEY(FLWARTIST) REFERENCES BAND(BNDID),
+  FOREIGN KEY(FLWARTIST) REFERENCES MUSIC(MSCID),
+  FOREIGN KEY(FLWUSER) REFERENCES USER(USRID)
 );
