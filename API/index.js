@@ -48,6 +48,23 @@ app.post('/api/singin', (req, res)=>{
     res.send('Requisição enviada');
 })
 
+app.get('/api/login', (req, res)=>{
+    // console.log(req.query);
+
+    connection.connect();
+    connection.query(("SELECT USRID, USREMAIL, USRPASSWORD FROM users WHERE USREMAIL LIKE '"+req.query.email+"'"),function(error, results,fields){
+      if (error) throw error
+      email = results.USREMAIL;
+      password = results.USRPASSWORD;
+      // console.log(results);
+      // console.log(email);
+      console.log(results);
+      res.json(results);
+      console.log(res)
+    })
+    connection.end();
+});
+
 
 // iniciando o servidor 
 app.listen(PORT, ()=>{
