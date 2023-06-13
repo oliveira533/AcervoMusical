@@ -38,6 +38,6 @@
 
 ## Gestão
 <p>
-  O projeto vai ser gerido utilizando as sprints do Scrum e a organização do de entrega do kanaban.
+  O projeto vai ser gerido utilizando as sprints do Scrum e a organização de entregas do kanaban.
 </p>
 
