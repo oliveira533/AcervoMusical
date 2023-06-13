@@ -38,7 +38,7 @@ app.get('/api/connect', (req, res) =>{
     connection.end();
 });
 
-// Caminho para criar usuário para cadastro
+// Caminho para criar usuário
 app.post('/api/singin', (req, res)=>{
     console.log(req.query)
 
