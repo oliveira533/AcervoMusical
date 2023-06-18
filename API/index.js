@@ -49,20 +49,39 @@ app.post('/api/singin', (req, res)=>{
 })
 
 app.get('/api/login', (req, res)=>{
-    // console.log(req.query);
 
+    // Fazendo a consulta no banco de dados
     connection.connect();
     connection.query(("SELECT USRID, USREMAIL, USRPASSWORD FROM users WHERE USREMAIL LIKE '"+req.query.email+"'"),function(error, results,fields){
-      if (error) throw error
-      email = results.USREMAIL;
-      password = results.USRPASSWORD;
-      // console.log(results);
-      // console.log(email);
-      console.log(results);
-      res.json(results);
-      console.log(res)
-    })
     connection.end();
+      if (error) throw error
+
+      jsonData = JSON.stringify(results);
+      // Acessando o campo USREMAIL
+      email = jsonData[0].USREMAIL;
+      // Acessando o campo USRPASSWORD
+      password = jsonData[0].USRPASSWORD;
+
+      // Verificando os dados que foram passados
+      console.log(email);
+      console.log(req.query.email)
+      console.log(password);
+      console.log(req.query.password)
+
+      // Testano se as credencais 
+      if(req.query.email == email && req.query.password == password){
+        // Resposta verdadeira
+        res.json({
+          'id': jsonData[0].USRID,
+          'logged': true
+        })}
+      else{
+        // Resposta falsa
+        res.json({
+          'id': false,
+          'logged': false
+        })};
+    })
 });
 
 
