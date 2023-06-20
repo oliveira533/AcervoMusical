@@ -84,6 +84,8 @@ app.get('/api/login', (req, res)=>{
     })
 });
 
+// Caminho para pesquisar arquivos
+
 
 // iniciando o servidor 
 app.listen(PORT, ()=>{
