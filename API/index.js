@@ -23,73 +23,73 @@ app.use(bodyParser.json());
 
 // Caminho para criar usuário USR-ADD
 app.post('/api/singin', (req, res)=>{
-    sQuery= "INSERT INTO users(USRNAME, USREMAIL, USRPASSWORD) VALUES('"+req.query.name+"', '"+req.query.email+"', '"+req.query.password+"')";
+  sQuery= "INSERT INTO users(USRNAME, USREMAIL, USRPASSWORD) VALUES('"+req.query.name+"', '"+req.query.email+"', '"+req.query.password+"')";
     
-    var connection = mysql.createConnection({
-      host     : 'localhost',
-      user     : 'root',
-      password : '',
-      database : 'acervo'
-    });
-    connection.connect();
-    connection.query(sQuery, function(error, results, fields){
-      if(error){
-        console.error(error);
-        res.status(500).send('Erro ao inserir dado no banco. Erro: '+error);
-        return;
-      }
-      res.send('Requisição enviada');
+  var connection = mysql.createConnection({
+    host     : 'localhost',
+    user     : 'root',
+    password : '',
+    database : 'acervo'
+  });
+  connection.connect();
+  connection.query(sQuery, function(error, results, fields){
+    if(error){
+      console.error(error);
+      res.status(500).send('Erro ao inserir dado no banco. Erro: '+error);
+      return;
+    }
+    res.send('Requisição enviada');
 
-      connection.end();
-    });
+    connection.end();
+  });
 })
 
 // Caminho para efetuar login USR-LOG
 app.get('/api/login', (req, res)=>{
-    sQuery = "SELECT USRID, USREMAIL, USRPASSWORD FROM users WHERE USREMAIL LIKE '"+req.query.email+"'";
+  sQuery = "SELECT USRID, USREMAIL, USRPASSWORD FROM users WHERE USREMAIL LIKE '"+req.query.email+"'";
 
-    var connection = mysql.createConnection({
-      host     : 'localhost',
-      user     : 'root',
-      password : '',
-      database : 'acervo'
-    });
-    connection.connect();
+  var connection = mysql.createConnection({
+    host     : 'localhost',
+    user     : 'root',
+    password : '',
+    database : 'acervo'
+  });
+  connection.connect();
 
-    connection.query(sQuery,function(error, results,fields){
-      if(error){
-        console.error(error);
-        res.status(500).send('Erro ao inserir dado no banco. Erro: '+error);
-        return;
-      }
+  connection.query(sQuery,function(error, results,fields){
+    if(error){
+      console.error(error);
+      res.status(500).send('Erro ao inserir dado no banco. Erro: '+error);
+      return;
+    }
 
-      jsonData = JSON.stringify(results);
-      // Acessando o campo USREMAIL
-      email = jsonData[0].USREMAIL;
-      // Acessando o campo USRPASSWORD
-      password = jsonData[0].USRPASSWORD;
+    jsonData = JSON.stringify(results);
+    // Acessando o campo USREMAIL
+    email = jsonData[0].USREMAIL;
+    // Acessando o campo USRPASSWORD
+    password = jsonData[0].USRPASSWORD;
 
-      // Verificando os dados que foram passados
-      console.log(email);
-      console.log(req.query.email)
-      console.log(password);
-      console.log(req.query.password)
+    // Verificando os dados que foram passados
+    console.log(email);
+    console.log(req.query.email)
+    console.log(password);
+    console.log(req.query.password)
 
-      // Testano se as credencais 
-      if(req.query.email == email && req.query.password == password){
-        // Resposta verdadeira
-        res.json({
-          'id': jsonData[0].USRID,
-          'logged': true
-        })}
-      else{
-        // Resposta falsa
-        res.json({
-          'id': false,
-          'logged': false
-        })};
-      connection.end()
-    })
+    // Testano se as credencais 
+    if(req.query.email == email && req.query.password == password){
+      // Resposta verdadeira
+      res.json({
+        'id': jsonData[0].USRID,
+        'logged': true
+      })}
+    else{
+      // Resposta falsa
+      res.json({
+        'id': false,
+        'logged': false
+      })};
+    connection.end()
+  })
 });
 
 // Caminho para efetuar login DATA-SER
@@ -115,7 +115,7 @@ app.get('/api/pesquisa', (req, res) => {
 
     res.json(results);
 
-    con.end();
+    connection.end();
   });
 });
 
@@ -123,7 +123,14 @@ app.get('/api/pesquisa', (req, res) => {
 app.post('/api/favorite/add/artist', (req, res) =>{
   sQuery= "INSERT INTO favorite(FAVUSER, FAVARTIST) VALUES ("+req.query.user+","+req.query.artist+")";
 
-  fnCheckConnection();
+  var connection = mysql.createConnection({
+    host     : 'localhost',
+    user     : 'root',
+    password : '',
+    database : 'acervo'
+  });
+  connection.connect();
+
   connection.query(sQuery, function(error, results, fields){
     if (error){
       console.error(error)
@@ -132,6 +139,8 @@ app.post('/api/favorite/add/artist', (req, res) =>{
     }
 
     res.status(201).send(true);
+
+    connection.end;
   });
 });
 
@@ -139,7 +148,14 @@ app.post('/api/favorite/add/artist', (req, res) =>{
 app.post('/api/favorite/add/band', (req, res) =>{
   sQuery = "INSERT INTO favorite(FAVUSER, FAVBAND) VALUES ("+req.query.user+","+req.query.band+");";
 
-  fnCheckConnection();
+  var connection = mysql.createConnection({
+    host     : 'localhost',
+    user     : 'root',
+    password : '',
+    database : 'acervo'
+  });
+  connection.connect();
+
   connection.query(sQuery, function(error, results, fields){
     if (error){
       console.error(error);
@@ -148,8 +164,11 @@ app.post('/api/favorite/add/band', (req, res) =>{
     }
     
     res.status(201).send(true);
+    connection.end();
   });
 });
+
+
 
 // iniciando o servidor 
 app.listen(PORT, ()=>{
