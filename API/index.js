@@ -116,9 +116,9 @@ app.get('/api/pesquisa', (req, res) => {
   });
 });
 
-// Caminho para adicionar favorito
+// Caminho para adicionar artista favorito
 app.post('/api/favorite/add/artist', (req, res) =>{
-  sQuery= "INSERT INTO `favorite`(`FAVUSER`, `FAVARTIST`) VALUES ("+req.query.user+","+req.query.artist+")";
+  sQuery= "INSERT INTO favorite(FAVUSER, FAVARTIST) VALUES ("+req.query.user+","+req.query.artist+")";
   connection.connect();
   connection.query(sQuery, function(error, results, fields){
     if (error){
@@ -128,7 +128,11 @@ app.post('/api/favorite/add/artist', (req, res) =>{
     }
     res.status(201).send(true);
   });
+});
 
+// Caminho para adicionar banda favorita
+app.post('api/favorite/add/band', (req, res) =>{
+  sQuery = "INSERT INTO favorite(FAVUSER, FAVBAND) VALUES ("+req.query.user+","+req.query.band+");";
 });
 
 // iniciando o servidor 
