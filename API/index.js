@@ -123,16 +123,31 @@ app.post('/api/favorite/add/artist', (req, res) =>{
   connection.query(sQuery, function(error, results, fields){
     if (error){
       console.error(error)
-      res.status(500).send('Erro ao inserir dado no banco. Erro:'+error);
+      res.status(400).send('Erro ao inserir dado no banco. Erro: '+error);
       return;
     }
+
     res.status(201).send(true);
+
+    connection.end()
   });
 });
 
 // Caminho para adicionar banda favorita
 app.post('api/favorite/add/band', (req, res) =>{
   sQuery = "INSERT INTO favorite(FAVUSER, FAVBAND) VALUES ("+req.query.user+","+req.query.band+");";
+  connection.connect();
+  connection.query(sQuery, function(error, results, fields){
+    if (error){
+      console.error(error);
+      res.status(400).send('Erro ao inserir dado no banco. Erro: '+error);
+      return;
+    }
+    
+    res.status(201).send(true);
+
+    connection.end();
+  });
 });
 
 // iniciando o servidor 
