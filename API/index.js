@@ -85,7 +85,7 @@ app.get('/api/login', (req, res)=>{
 });
 
 app.get('/api/pesquisa', (req, res) => {
-  console.log('Chegou')
+  // console.log('Chegou')
   // Criando variável de consulta
   sQuery = "SELECT MSCID ID,MSCNAME NOME FROM music WHERE MSCNAME LIKE '%" + req.query.value + "%' UNION SELECT ALBID ID,ALBNAME NOME FROM album WHERE ALBNAME LIKE '%" + req.query.value + "%' UNION SELECT BANID ID, BANNAME NOME FROM band WHERE BANNAME LIKE '%" + req.query.value + "%' UNION SELECT ARTID ID, ARTALTEREGO NOME FROM artist LEFT JOIN internal ON artist.ARTID = internal.INTARTIST WHERE internal.INTARTIST IS NULL AND (ARTALTEREGO LIKE '%" + req.query.value + "%' OR ARTNAME LIKE '%" + req.query.value + "%') UNION SELECT ARTID ID, ARTALTEREGO NOME FROM artist LEFT JOIN internal ON ARTID = INTARTIST WHERE INTARTIST = ARTID AND (ARTALTEREGO LIKE '%" + req.query.value + "%' OR ARTNAME LIKE '%" + req.query.value + "%');";
 
@@ -116,6 +116,10 @@ app.get('/api/pesquisa', (req, res) => {
   });
 });
 
+// Caminho para adicionar favorito
+app.post('/api/favorite/add', (req, res) =>{
+
+});
 
 // iniciando o servidor 
 app.listen(PORT, ()=>{
