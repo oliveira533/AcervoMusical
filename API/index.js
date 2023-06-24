@@ -117,7 +117,17 @@ app.get('/api/pesquisa', (req, res) => {
 });
 
 // Caminho para adicionar favorito
-app.post('/api/favorite/add', (req, res) =>{
+app.post('/api/favorite/add/artist', (req, res) =>{
+  sQuery= "INSERT INTO `favorite`(`FAVUSER`, `FAVARTIST`) VALUES ("+req.query.user+","+req.query.artist+")";
+  connection.connect();
+  connection.query(sQuery, function(error, results, fields){
+    if (error){
+      console.error(error)
+      res.status(500).send('Erro ao inserir dado no banco. Erro:'+error);
+      return;
+    }
+    res.status(201).send(true);
+  });
 
 });
 
