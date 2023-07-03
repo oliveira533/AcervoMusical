@@ -1,14 +1,7 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-
-// conexão com o banco de dados
-var mysql = require('mysql');
-var connection = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'root',
-  password : '',
-  database : 'acervo'
-});
+import express from 'express';
+import bodyParser from 'body-parser';
+import { fnAddFavAlb } from './my_modules/favorite.js';
+import mysql from 'mysql';
 
 // criando o app node
 const app = express();
@@ -23,7 +16,7 @@ app.use(bodyParser.json());
 
 // Caminho para criar usuário USR-ADD
 app.post('/api/singin', (req, res)=>{
-  sQuery= "INSERT INTO users(USRNAME, USREMAIL, USRPASSWORD) VALUES('"+req.query.name+"', '"+req.query.email+"', '"+req.query.password+"')";
+  var sQuery= "INSERT INTO users(USRNAME, USREMAIL, USRPASSWORD) VALUES('"+req.query.name+"', '"+req.query.email+"', '"+req.query.password+"')";
     
   var connection = mysql.createConnection({
     host     : 'localhost',
@@ -46,7 +39,7 @@ app.post('/api/singin', (req, res)=>{
 
 // Caminho para efetuar login USR-LOG
 app.get('/api/login', (req, res)=>{
-  sQuery = "SELECT USRID, USREMAIL, USRPASSWORD FROM users WHERE USREMAIL LIKE '"+req.query.email+"'";
+  var sQuery = "SELECT USRID, USREMAIL, USRPASSWORD FROM users WHERE USREMAIL LIKE '"+req.query.email+"'";
 
   var connection = mysql.createConnection({
     host     : 'localhost',
@@ -95,7 +88,7 @@ app.get('/api/login', (req, res)=>{
 // Caminho para efetuar login DATA-SER
 app.get('/api/pesquisa', (req, res) => {
   // Criando variável de consulta
-  sQuery = "SELECT MSCID ID,MSCNAME NOME FROM music WHERE MSCNAME LIKE '%" + req.query.value + "%' UNION SELECT ALBID ID,ALBNAME NOME FROM album WHERE ALBNAME LIKE '%" + req.query.value + "%' UNION SELECT BANID ID, BANNAME NOME FROM band WHERE BANNAME LIKE '%" + req.query.value + "%' UNION SELECT ARTID ID, ARTALTEREGO NOME FROM artist LEFT JOIN internal ON artist.ARTID = internal.INTARTIST WHERE internal.INTARTIST IS NULL AND (ARTALTEREGO LIKE '%" + req.query.value + "%' OR ARTNAME LIKE '%" + req.query.value + "%') UNION SELECT ARTID ID, ARTALTEREGO NOME FROM artist LEFT JOIN internal ON ARTID = INTARTIST WHERE INTARTIST = ARTID AND (ARTALTEREGO LIKE '%" + req.query.value + "%' OR ARTNAME LIKE '%" + req.query.value + "%');";
+  var sQuery = "SELECT MSCID ID,MSCNAME NOME FROM music WHERE MSCNAME LIKE '%" + req.query.value + "%' UNION SELECT ALBID ID,ALBNAME NOME FROM album WHERE ALBNAME LIKE '%" + req.query.value + "%' UNION SELECT BANID ID, BANNAME NOME FROM band WHERE BANNAME LIKE '%" + req.query.value + "%' UNION SELECT ARTID ID, ARTALTEREGO NOME FROM artist LEFT JOIN internal ON artist.ARTID = internal.INTARTIST WHERE internal.INTARTIST IS NULL AND (ARTALTEREGO LIKE '%" + req.query.value + "%' OR ARTNAME LIKE '%" + req.query.value + "%') UNION SELECT ARTID ID, ARTALTEREGO NOME FROM artist LEFT JOIN internal ON ARTID = INTARTIST WHERE INTARTIST = ARTID AND (ARTALTEREGO LIKE '%" + req.query.value + "%' OR ARTNAME LIKE '%" + req.query.value + "%');";
   
   var connection = mysql.createConnection({
     host     : 'localhost',
@@ -121,7 +114,7 @@ app.get('/api/pesquisa', (req, res) => {
 
 // Caminho para adicionar artista favorito FAV-ADD-ART
 app.post('/api/favorite/add/artist', (req, res) =>{
-  sQuery= "INSERT INTO favorite(FAVUSER, FAVARTIST) VALUES ("+req.query.user+","+req.query.artist+")";
+  var sQuery= "INSERT INTO favorite(FAVUSER, FAVARTIST) VALUES ("+req.query.user+","+req.query.artist+")";
 
   var connection = mysql.createConnection({
     host     : 'localhost',
@@ -146,7 +139,7 @@ app.post('/api/favorite/add/artist', (req, res) =>{
 
 // Caminho para adicionar banda favorita FAV-ADD-BND
 app.post('/api/favorite/add/band', (req, res) =>{
-  sQuery = "INSERT INTO favorite(FAVUSER, FAVBAND) VALUES ("+req.query.user+","+req.query.band+");";
+  var sQuery = "INSERT INTO favorite(FAVUSER, FAVBAND) VALUES ("+req.query.user+","+req.query.band+");";
 
   var connection = mysql.createConnection({
     host     : 'localhost',
@@ -170,7 +163,7 @@ app.post('/api/favorite/add/band', (req, res) =>{
 
 // Caminho para adicionar música favorita FAV-ADD-MSC
 app.post('/api/favorite/add/music', (req, res)=>{
-  sQuery = "INSERT INTO favorite(FAVUSER, FAVMUSIC) VALUES ("+req.query.user+","+req.query.music+");";
+  var sQuery = "INSERT INTO favorite(FAVUSER, FAVMUSIC) VALUES ("+req.query.user+","+req.query.music+");";
 
   var connection = mysql.createConnection({
     host : 'localhost',
@@ -194,26 +187,12 @@ app.post('/api/favorite/add/music', (req, res)=>{
 
 // Caminho para adicionar album favorito FAV-ADD-ALB
 app.post('/api/favorito/add/album', (req, res)=>{
-  sQuery = "INSERT INTO favorite(FAVUSER, FAVALBUM) VALUES("+req.query.user+","+req.query.albun+");";
-
-  var connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'Acervo'
-  });
-
-  connection.connect();
-
-  connection.query(sQuery, function(error, results, fields){
-    if (error){
-      console.log(error);
-      res.status(500).send('Erro ao inserir dado no banco. Erro: '+error);
-    }
-
+  var sResponse = fnAddFavAlb(req.query.user, req.query.album);
+  console.log(sResponse);
+  if(sResponse == true)
     res.status(201).send(true);
-    connection.end();
-  });
+  else
+    res.status(500).send('erro ao inserir dado no banco. Erro: '+sResponse);
 });
 
 // iniciando o servidor 
