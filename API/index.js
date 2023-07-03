@@ -119,7 +119,7 @@ app.get('/api/pesquisa', (req, res) => {
   });
 });
 
-// Caminho para adicionar artista favorito
+// Caminho para adicionar artista favorito FAV-ADD-ART
 app.post('/api/favorite/add/artist', (req, res) =>{
   sQuery= "INSERT INTO favorite(FAVUSER, FAVARTIST) VALUES ("+req.query.user+","+req.query.artist+")";
 
@@ -144,7 +144,7 @@ app.post('/api/favorite/add/artist', (req, res) =>{
   });
 });
 
-// Caminho para adicionar banda favorita
+// Caminho para adicionar banda favorita FAV-ADD-BND
 app.post('/api/favorite/add/band', (req, res) =>{
   sQuery = "INSERT INTO favorite(FAVUSER, FAVBAND) VALUES ("+req.query.user+","+req.query.band+");";
 
@@ -168,7 +168,53 @@ app.post('/api/favorite/add/band', (req, res) =>{
   });
 });
 
+// Caminho para adicionar música favorita FAV-ADD-MSC
+app.post('/api/favorite/add/music', (req, res)=>{
+  sQuery = "INSERT INTO favorite(FAVUSER, FAVMUSIC) VALUES ("+req.query.user+","+req.query.music+");";
 
+  var connection = mysql.createConnection({
+    host : 'localhost',
+    user : 'root',
+    password: '',
+    database: 'acervo'
+  });
+  connection.connect();
+
+  connection.query(sQuery, function(error, results, fields){
+    if (error){
+      console.error(error);
+      res.status(500).send('Erro ao inserir dado no banco. Erro: '+error);
+      return
+    }
+
+    res.status(201).send(true);
+    connection.end();
+  });
+});
+
+// Caminho para adicionar album favorito FAV-ADD-ALB
+app.post('/api/favorito/add/album', (req, res)=>{
+  sQuery = "INSERT INTO favorite(FAVUSER, FAVALBUM) VALUES("+req.query.user+","+req.query.albun+");";
+
+  var connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: '',
+    database: 'Acervo'
+  });
+
+  connection.connect();
+
+  connection.query(sQuery, function(error, results, fields){
+    if (error){
+      console.log(error);
+      res.status(500).send('Erro ao inserir dado no banco. Erro: '+error);
+    }
+
+    res.status(201).send(true);
+    connection.end();
+  });
+});
 
 // iniciando o servidor 
 app.listen(PORT, ()=>{
