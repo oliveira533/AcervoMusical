@@ -28,7 +28,7 @@ app.post('/api/singin', (req, res)=>{
   connection.query(sQuery, function(error, results, fields){
     if(error){
       console.error(error);
-      res.status(500).send('Erro ao inserir dado no banco. Erro: '+error);
+      res.status(501).send('Erro ao inserir dado no banco. Erro: '+error);
       return;
     }
     res.send('Requisição enviada');
@@ -52,7 +52,7 @@ app.get('/api/login', (req, res)=>{
   connection.query(sQuery,function(error, results,fields){
     if(error){
       console.error(error);
-      res.status(500).send('Erro ao inserir dado no banco. Erro: '+error);
+      res.status(501).send('Erro ao inserir dado no banco. Erro: '+error);
       return;
     }
 
@@ -102,7 +102,7 @@ app.get('/api/pesquisa', (req, res) => {
     if (error) {
       // Tratativa de erro da requisição
       console.error(error);
-      res.status(500).send('Erro no servidor');
+      res.status(501).send('Erro no servidor');
       return;
     }
 
@@ -127,7 +127,7 @@ app.post('/api/favorite/add/artist', (req, res) =>{
   connection.query(sQuery, function(error, results, fields){
     if (error){
       console.error(error)
-      res.status(500).send('Erro ao inserir dado no banco. Erro: '+error);
+      res.status(501).send('Erro ao inserir dado no banco. Erro: '+error);
       return;
     }
 
@@ -152,7 +152,7 @@ app.post('/api/favorite/add/band', (req, res) =>{
   connection.query(sQuery, function(error, results, fields){
     if (error){
       console.error(error);
-      res.status(500).send('Erro ao inserir dado no banco. Erro: '+error);
+      res.status(501).send('Erro ao inserir dado no banco. Erro: '+error);
       return;
     }
     
@@ -176,7 +176,7 @@ app.post('/api/favorite/add/music', (req, res)=>{
   connection.query(sQuery, function(error, results, fields){
     if (error){
       console.error(error);
-      res.status(500).send('Erro ao inserir dado no banco. Erro: '+error);
+      res.status(501).send('Erro ao inserir dado no banco. Erro: '+error);
       return
     }
 
@@ -201,7 +201,7 @@ app.post('/api/favorito/add/album', (req, res)=>{
   connection.query(sQuery, function(error, results, fields){
     if (error){
         console.log(error);
-        res.status(500).send('erro ao inserir dado no banco. Erro: '+sResponse);
+        res.status(501).send('erro ao inserir dado no banco. Erro: '+error);
         return
     }
 
@@ -211,11 +211,31 @@ app.post('/api/favorito/add/album', (req, res)=>{
     
 });
 
+app.post('/api/favorite/serch/album', (req, res)=>{
+  var sQuery = 'SELECT ALBNAME Album, ALBID ID FROM album LEFT JOIN favorite ON FAVALBUM = ALBID WHERE FAVUSER = ' + req.query.user;
+
+  var connection = mysql.createConnection({
+    host :'localhost',
+    user : 'root',
+    password: '',
+    database : 'Acervo'
+  });
+
+  connection.connect();
+
+  connection.query(sQuery, function(error, results, fields){
+    if(error){
+      console.log(error);
+      res.status(501).send('Erro ao inserir dado no banco. Erro: '+error);
+      return
+    }
+
+    res.status(201).send(true)
+    connection.end();
+  });
+});
+
 // iniciando o servidor 
 app.listen(PORT, ()=>{
     console.log('Servidor está online na porta '+PORT);
 });
-
-function fnTeste(){
-  return(true)
-}
