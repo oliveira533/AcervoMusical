@@ -187,15 +187,35 @@ app.post('/api/favorite/add/music', (req, res)=>{
 
 // Caminho para adicionar album favorito FAV-ADD-ALB
 app.post('/api/favorito/add/album', (req, res)=>{
-  var sResponse = fnAddFavAlb(req.query.user, req.query.album);
-  console.log(sResponse);
-  if(sResponse == true)
+  var sQuery = "INSERT INTO favorite(FAVUSER, FAVALBUM) VALUES("+req.query.user+","+req.query.album+");";
+
+  var connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: '',
+    database: 'Acervo'
+  });
+
+  connection.connect();
+
+  connection.query(sQuery, function(error, results, fields){
+    if (error){
+        console.log(error);
+        res.status(500).send('erro ao inserir dado no banco. Erro: '+sResponse);
+        return
+    }
+
     res.status(201).send(true);
-  else
-    res.status(500).send('erro ao inserir dado no banco. Erro: '+sResponse);
+    connection.end();
+  });
+    
 });
 
 // iniciando o servidor 
 app.listen(PORT, ()=>{
     console.log('Servidor está online na porta '+PORT);
 });
+
+function fnTeste(){
+  return(true)
+}
