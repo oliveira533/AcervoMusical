@@ -211,7 +211,7 @@ app.post('/api/favorito/add/album', (req, res)=>{
 });
 
 // Rota para procurar o album favorito FAV-SRC-ALB
-app.post('/api/favorite/search/album', (req, res)=>{
+app.get('/api/favorite/search/album', (req, res)=>{
   var sQuery = 'SELECT ALBNAME Album, ALBID ID FROM album LEFT JOIN favorite ON FAVALBUM = ALBID WHERE FAVUSER = ' + req.query.user;
 
   var connection = mysql.createConnection({
@@ -236,7 +236,7 @@ app.post('/api/favorite/search/album', (req, res)=>{
 });
 
 // Rota para procurar a música favorita FAV-SRC-MSC
-app.post('/api/favorite/search/music', (req, res)=>{
+app.get('/api/favorite/search/music', (req, res)=>{
   var sQuery = 'SELECT MSCNAME, MSCID FROM music LEFT JOIN favorite ON FAVMUSIC = MSCID WHERE FAVUSER = ' + req.query.user;
   
   var connection = mysql.createConnection({
