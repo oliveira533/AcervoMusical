@@ -230,7 +230,7 @@ app.get('/api/favorite/search/album', (req, res)=>{
       return
     }
 
-    res.status(201).send(true)
+    res.status(202).send(true)
     connection.end();
   });
 });
@@ -251,11 +251,11 @@ app.get('/api/favorite/search/music', (req, res)=>{
   connection.query(sQuery, function(error, results, fields){
     if(error){
       console.log(error);
-      res.status(502).send('Erro ao buscar dado no bando. Erro: '+ error);
+      res.status(502).send('Erro ao buscar dado no banco. Erro: '+ error);
       return
     }
 
-    res.status(201).send(true);
+    res.status(202).send(true);
     connection.end();
   });
 });
@@ -272,6 +272,14 @@ app.get('/api/favorite/search/band', (req, res)=>{
   });
 
   connection.connect();
+
+  connection.query(sQuery, function(error, results, fields){
+    if(error){
+      console.log(error);
+      res.status(502).send('Erro ao buscar dado no banco. Erro: '+ error);
+    }
+    res.status(202).send(true)
+  });
 });
 
 
