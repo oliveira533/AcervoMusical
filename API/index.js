@@ -260,6 +260,19 @@ app.get('/api/favorite/search/music', (req, res)=>{
   });
 });
 
+// Rota para procurar a banda favorita FAV-SRC-BND
+app.get('/api/favorite/search/band', (req, res)=>{
+  var sQuery = 'SELECT BANNAME, BANID FROM band LEFT JOIN favorite ON FAVBAND = BANID WHERE FAVUSER = ' +req.query.user;
+
+  var connection = mysql.createConnection({
+    host: 'localhost',
+    user : 'root',
+    password : '',
+    database : 'Acervo'
+  });
+
+  connection.connect();
+});
 
 
 // iniciando o servidor 
