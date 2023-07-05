@@ -282,6 +282,13 @@ app.get('/api/favorite/search/band', (req, res)=>{
   });
 });
 
+// Rota para procurar o artista favorito FAV-SRC-ART
+app.get('/api/favorite/search/artist', (req, res) =>{
+  let sQuery = 'SELECT ARTNAME, ARTID FROM artist LEFT JOIN favorite ON FAVARTIST = ARTID WHERE FAVUSER = ' +req.query.user;
+
+  let connection = mysql.createConnection({})
+})
+
 
 // iniciando o servidor 
 app.listen(PORT, ()=>{
