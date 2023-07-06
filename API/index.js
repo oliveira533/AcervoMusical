@@ -84,7 +84,7 @@ app.get('/api/login', (req, res)=>{
   })
 });
 
-// Rota para efetuar login DATA-SER
+// Rota para realizar a pesquisa
 app.get('/api/pesquisa', (req, res) => {
   // Criando variável de consulta
   let sQuery = "SELECT MSCID ID,MSCNAME NOME FROM music WHERE MSCNAME LIKE '%" + req.query.value + "%' UNION SELECT ALBID ID,ALBNAME NOME FROM album WHERE ALBNAME LIKE '%" + req.query.value + "%' UNION SELECT BANID ID, BANNAME NOME FROM band WHERE BANNAME LIKE '%" + req.query.value + "%' UNION SELECT ARTID ID, ARTALTEREGO NOME FROM artist LEFT JOIN internal ON artist.ARTID = internal.INTARTIST WHERE internal.INTARTIST IS NULL AND (ARTALTEREGO LIKE '%" + req.query.value + "%' OR ARTNAME LIKE '%" + req.query.value + "%') UNION SELECT ARTID ID, ARTALTEREGO NOME FROM artist LEFT JOIN internal ON ARTID = INTARTIST WHERE INTARTIST = ARTID AND (ARTALTEREGO LIKE '%" + req.query.value + "%' OR ARTNAME LIKE '%" + req.query.value + "%');";
@@ -299,10 +299,42 @@ app.get('/api/favorite/search/artist', (req, res) =>{
     if(error){
       console.log(error);
       res.status(502).send('Erro ao buscar dado no banco. Erro: ', error);
+      return
     }
     res.status(202).send(true);
   });
-})
+});
+
+// Rota para passar o carrossel com recomendações aleatórias RAN-CAR
+// Refazer
+// app.get('/api/random/music', (req, res) =>{
+//   const qTotal = 'SELECT COUNT(*) max FROM music';
+
+//   let connection = mysql.createConnection({
+//     host : 'localhost',
+//     user : 'root',
+//     password : '',
+//     database : 'Acervo'
+//   });
+
+//   connection.connect();
+
+//   connection.query(qTotal, function(error, results, fields){
+//     if(error){
+//       console.log(error);
+//       res.status(202).send('Erro ao buscar dado no banco. Erro: '+ error);
+//       return
+//     }
+//     console.log(results)
+
+//     let jMax = JSON.stringify(results);
+//     console.log(jMax)
+
+//     let sQuery = 'SELECT * FROM music WHERE MSCID = '
+
+//     res.send(jMax.max)
+//   });
+// });
 
 
 // iniciando o servidor 
