@@ -278,7 +278,7 @@ app.get('/api/favorite/search/band', (req, res)=>{
       console.log(error);
       res.status(502).send('Erro ao buscar dado no banco. Erro: '+ error);
     }
-    res.status(202).send(true)
+    res.status(202).send(true);
   });
 });
 
@@ -286,7 +286,22 @@ app.get('/api/favorite/search/band', (req, res)=>{
 app.get('/api/favorite/search/artist', (req, res) =>{
   let sQuery = 'SELECT ARTNAME, ARTID FROM artist LEFT JOIN favorite ON FAVARTIST = ARTID WHERE FAVUSER = ' +req.query.user;
 
-  let connection = mysql.createConnection({})
+  let connection = mysql.createConnection({
+    host : 'localhost',
+    user: 'root',
+    password: '',
+    database: 'Acervo'
+  });
+
+  connection.connect();
+
+  connection.query(sQuery, function(error, results, fields){
+    if(error){
+      console.log(error);
+      res.status(502).send('Erro ao buscar dado no banco. Erro: ', error);
+    }
+    res.status(202).send(true);
+  });
 })
 
 
