@@ -1,6 +1,6 @@
-import express from 'express';
-import bodyParser from 'body-parser';
-import mysql from 'mysql';
+express = require('express');
+bodyParser = require('body-parser');
+mysql = require('mysql');
 
 // criando o app node
 const app = express();
@@ -55,13 +55,14 @@ app.get('/api/login', (req, res)=>{
       return;
     }
 
-    jsonData = JSON.stringify(results);
+    jsonData = JSON.parse(JSON.stringify(results));
     // Acessando o campo USREMAIL
     email = jsonData[0].USREMAIL;
     // Acessando o campo USRPASSWORD
     password = jsonData[0].USRPASSWORD;
 
     // Verificando os dados que foram passados
+    console.log(jsonData[0])
     console.log(email);
     console.log(req.query.email)
     console.log(password);
@@ -230,7 +231,9 @@ app.get('/api/favorite/search/album', (req, res)=>{
       return
     }
 
-    res.status(202).send(true)
+    jData = JSON.parse(JSON.stringify(results));
+
+    res.status(202).send(jData);
     connection.end();
   });
 });
@@ -255,7 +258,9 @@ app.get('/api/favorite/search/music', (req, res)=>{
       return
     }
 
-    res.status(202).send(true);
+    jData = JSON.parse(JSON.stringify(results));
+
+    res.status(202).send(jData);
     connection.end();
   });
 });
@@ -278,7 +283,11 @@ app.get('/api/favorite/search/band', (req, res)=>{
       console.log(error);
       res.status(502).send('Erro ao buscar dado no banco. Erro: '+ error);
     }
-    res.status(202).send(true);
+
+    jData = JSON.parse(JSON.stringify(results));
+
+    res.status(202).send(jData);
+    connection.end();
   });
 });
 
@@ -301,43 +310,100 @@ app.get('/api/favorite/search/artist', (req, res) =>{
       res.status(502).send('Erro ao buscar dado no banco. Erro: ', error);
       return
     }
-    res.status(202).send(true);
+
+    jData = JSON.parse(JSON.stringify(results));
+
+    res.status(202).send(jData);
+    connection.end();
   });
 });
 
 // Rota para passar o carrossel com recomendações aleatórias RAN-CAR
 // Refazer
-// app.get('/api/random/music', (req, res) =>{
-//   const qTotal = 'SELECT COUNT(*) max FROM music';
+app.get('/api/random/music', (req, res) =>{
+  fnMax(function(qTotal){
+    var value = []
+  
+    for (let i = 0; i < 4; i++) {
+      let nRandom = parseInt(Math.random() * (qTotal - 1) + 1);
+      if(value[i] == undefined){
+        if(value[i-1] == undefined){
+          value.push(nRandom);
+        }
+        else{
+          if(value[i-1] != nRandom){
+            value.push(nRandom);
+          }
+        }
+      }
+      else{
+        if(value[i-1] == undefined){
+          value.push(nRandom);
+        }
+        else{
+          if(value[i-1] != nRandom){
+            value.push(nRandom);
+          }
+        }
+      }  
+    }
 
-//   let connection = mysql.createConnection({
-//     host : 'localhost',
-//     user : 'root',
-//     password : '',
-//     database : 'Acervo'
-//   });
+    let sQuery = 'SELECT * FROM music WHERE MSCID = '+value[0]+' OR MSCID = '+value[1]+' OR MSCID = '+value[2]+' OR MSCID = '+ value[3];
 
-//   connection.connect();
+    let connection = mysql.createConnection({
+      host : 'localhost',
+      user : 'root',
+      password : '',
+      database : 'Acervo'
+    });
 
-//   connection.query(qTotal, function(error, results, fields){
-//     if(error){
-//       console.log(error);
-//       res.status(202).send('Erro ao buscar dado no banco. Erro: '+ error);
-//       return
-//     }
-//     console.log(results)
+    connection.connect()
 
-//     let jMax = JSON.stringify(results);
-//     console.log(jMax)
+    connection.query(sQuery, function(error, results, fields){
+      if(error){
+        console.log(error);
+        res.status(502).send('Erro ao buscar dado no banco. Erro: ' + error);
+        return
+      }
+      
+      jData = JSON.parse(JSON.stringify(results));
 
-//     let sQuery = 'SELECT * FROM music WHERE MSCID = '
+      res.status(202).send(jData);
+      connection.end();
+    });
 
-//     res.send(jMax.max)
-//   });
-// });
+  });
+});
 
 
 // iniciando o servidor 
 app.listen(PORT, ()=>{
     console.log('Servidor está online na porta '+PORT);
 });
+
+
+
+function fnMax(callback){
+  let qTotal = 'SELECT COUNT(*) max FROM music';
+
+  let connection = mysql.createConnection({
+    host : 'localhost',
+    user : 'root',
+    password : '',
+    database : 'Acervo'
+  });
+
+  connection.connect();
+
+  connection.query(qTotal, function(error, results, fields){
+    if(error){
+      console.log(error);
+      return false
+    }
+
+    let jMax = JSON.parse(JSON.stringify(results));
+    let nMax = jMax[0].max;
+    callback(nMax);
+  });
+  connection.end();
+}
