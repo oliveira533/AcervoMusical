@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 
 
 // Rota para criar usuário USR-ADD
-app.post('/api/singin', (req, res)=>{
+app.post('/api/user/singin', (req, res)=>{
   let sQuery= "INSERT INTO users(USRNAME, USREMAIL, USRPASSWORD) VALUES('"+req.query.name+"', '"+req.query.email+"', '"+req.query.password+"')";
     
   let connection = mysql.createConnection({
@@ -37,7 +37,7 @@ app.post('/api/singin', (req, res)=>{
 })
 
 // Rota para efetuar login USR-LOG
-app.get('/api/login', (req, res)=>{
+app.get('/api/user/login', (req, res)=>{
   let sQuery = "SELECT USRID, USREMAIL, USRPASSWORD FROM users WHERE USREMAIL LIKE '"+req.query.email+"'";
 
   let connection = mysql.createConnection({
@@ -319,7 +319,6 @@ app.get('/api/favorite/search/artist', (req, res) =>{
 });
 
 // Rota para passar o carrossel com recomendações aleatórias RAN-CAR
-// Refazer
 app.get('/api/random/music', (req, res) =>{
   fnMax(function(qTotal){
     var value = []
@@ -357,7 +356,7 @@ app.get('/api/random/music', (req, res) =>{
       database : 'Acervo'
     });
 
-    connection.connect()
+    connection.connect();
 
     connection.query(sQuery, function(error, results, fields){
       if(error){
@@ -375,6 +374,29 @@ app.get('/api/random/music', (req, res) =>{
   });
 });
 
+// Rota para atualizar dados do usuário USR-UP-DT-CON
+app.put('/api/user/update/config', (req, res)=>{
+  let sQuery = "UPDATE users SET USREMAIL = '"+req.query.email+"', USRDTBIRTH = '"+req.query.birth+"', USRDTPHONE = '"+req.query.phone+"', USERPASSWORD = '"+req.query.password+"' WHERE USRID = "+req.query.user+";";
+
+  let connection = mysql.createConnection({
+    host : 'localhost',
+    user : 'root',
+    password : '',
+    database: 'Acervo'
+  });
+
+  connection.connect();
+
+  connection.query(sQuery, function(results, error,fields){
+    if(error){
+      res.status(503).send('Erro ao atualizar dado no banco. Erro: '+error);
+      return
+    }
+
+    res.status(203).send(true);
+    connection.end();
+  });
+});
 
 // iniciando o servidor 
 app.listen(PORT, ()=>{
