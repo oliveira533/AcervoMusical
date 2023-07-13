@@ -417,9 +417,35 @@ app.put('/api/user/update/config', (req, res) =>{
       return
     }
     res.status(203).send(true);
+    connection.end();
   });
 });
 
+// Rota para buscar as músicas de um album SRC-MSC-ALB
+app.get('/api/album/music', (req, res) =>{
+  let sQuery = 'SELECT * FROM music LEFT JOIN track ON MSCID = RNGMUSIC WHERE RNGALBUM = '+ req.query.album;
+
+  let connection = mysql.createConnection({
+    host: 'localhost',
+    user : 'root',
+    password : '',
+    database : 'Acervo'
+  });
+
+  connection.connect();
+
+  connection.query(sQuery, function(results, error, fields){
+    if(error){
+      res.status(502).send('Erro na busca. Erro: '+error);
+      return
+    }
+
+    jData = JSON.parse(JSON.stringify(results));
+
+    res.status(202).send(jData);
+    connection.end();
+  })
+});
 
 
 // iniciando o servidor 
