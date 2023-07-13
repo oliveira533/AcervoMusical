@@ -473,6 +473,7 @@ app.get('/api/banda/album', (req, res)=>{
 });
 
 
+
 // iniciando o servidor 
 app.listen(PORT, ()=>{
     console.log('Servidor está online na porta '+PORT);
