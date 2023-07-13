@@ -447,6 +447,7 @@ app.get('/api/album/music', (req, res) =>{
   });
 });
 
+// Rota para buscar albuns de uma banda SRC-ALB-BND
 app.get('/api/banda/album', (req, res)=>{
   let sQuery = 'SELECT * FROM album WHERE ALBBAND = '+ req.query.album;
 
