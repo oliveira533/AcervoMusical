@@ -448,7 +448,7 @@ app.get('/api/album/music', (req, res) =>{
 });
 
 // Rota para buscar albuns de uma banda SRC-ALB-BND
-app.get('/api/banda/album', (req, res)=>{
+app.get('/api/band/album', (req, res)=>{
   let sQuery = 'SELECT * FROM album WHERE ALBBAND = '+ req.query.album;
 
   let connection = mysql.createConnection({
@@ -469,6 +469,33 @@ app.get('/api/banda/album', (req, res)=>{
     jData = JSON.parse(JSON.stringify(results));
 
     res.status(202).send(jData);
+    connection.end();
+  });
+});
+
+// Rota para buscar albuns de um srtista SRC-ALB-ART
+app.get('/api/artist/album', (req, res)=>{
+  let sQuery = 'SELECT * FROM album WHERE ALBARTIST = ' + req.query.artist;
+
+  let connection = mysql.createConnection({
+    host : 'localhost',
+    user : 'root',
+    password : '',
+    database : 'Acervo'
+  });
+
+  connection.connect();
+
+  connection.query(sQuery, function(results, error, fields){
+    if(error){
+      res.status(502).send('Erro na busca. Erro: '+error);
+      return
+    }
+
+    jData = JSON.parse(JSON.stringify(results));
+
+    res.status(202).send(jData);
+    connection.end();
   });
 });
 
