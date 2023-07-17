@@ -376,8 +376,9 @@ app.get('/api/random/music', (req, res) =>{
 
 // Rota para atualizar dados do usuário USR-UP-DT-CON
 app.put('/api/user/update/config', (req, res)=>{
-  let sQuery = "UPDATE users SET USREMAIL = '"+req.query.email+"', USRDTBIRTH = '"+req.query.birth+"', USRDTPHONE = '"+req.query.phone+"', USERPASSWORD = '"+req.query.password+"' WHERE USRID = "+req.query.user+";";
+  let sQuery = "UPDATE users SET USREMAIL = '"+req.query.email+"', USRDTBIRTH = '"+req.query.birth+"', USRPHONE = '"+req.query.phone+"', USRPASSWORD = '"+req.query.password+"' WHERE USRID = "+req.query.user+";";
 
+  // console.log(sQuery)
   let connection = mysql.createConnection({
     host : 'localhost',
     user : 'root',
@@ -387,19 +388,21 @@ app.put('/api/user/update/config', (req, res)=>{
 
   connection.connect();
 
-  connection.query(sQuery, function(results, error,fields){
+  connection.query(sQuery, function(error, results ,fields){
     if(error){
+      console.log(error);
       res.status(503).send('Erro ao atualizar dado no banco. Erro: '+error);
       return
     }
 
+    // console.log(results);
     res.status(203).send(true);
     connection.end();
   });
 });
 
 // Rota para atualizar dados do usuário USR-UP-DT-PRF
-app.put('/api/user/update/config', (req, res) =>{
+app.put('/api/user/update/profile', (req, res) =>{
   let sQuery = "UPDATE users SET USRNAME = '"+req.query.name+"', URSDESC = '"+req.query.desc+"' WHERE USRID = "+req.query.user+";";
 
   let connection = mysql.createConnection({
@@ -411,8 +414,9 @@ app.put('/api/user/update/config', (req, res) =>{
 
   connection.connect();
 
-  connection.query(sQuery, function(results, error, fields){
+  connection.query(sQuery, function(error, results,  fields){
     if(error){
+      console.log(error);
       res.status(503).send('Erro ao atualizar dado no banco. Erro: '+error);
       return
     }
