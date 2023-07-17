@@ -438,14 +438,16 @@ app.get('/api/album/music', (req, res) =>{
 
   connection.connect();
 
-  connection.query(sQuery, function(results, error, fields){
+  connection.query(sQuery, function(error, results,  fields){
     if(error){
+      console.log(error);
       res.status(502).send('Erro na busca. Erro: '+error);
       return
     }
 
     jData = JSON.parse(JSON.stringify(results));
 
+    // console.log(jData)
     res.status(202).send(jData);
     connection.end();
   });
@@ -453,7 +455,7 @@ app.get('/api/album/music', (req, res) =>{
 
 // Rota para buscar albuns de uma banda SRC-ALB-BND
 app.get('/api/band/album', (req, res)=>{
-  let sQuery = 'SELECT * FROM album WHERE ALBBAND = '+ req.query.album;
+  let sQuery = 'SELECT * FROM album WHERE ALBBAND = '+ req.query.band;
 
   let connection = mysql.createConnection({
     host : 'localhost',
@@ -464,14 +466,15 @@ app.get('/api/band/album', (req, res)=>{
 
   connection.connect();
 
-  connection.query(sQuery, function(results, error, fields){
+  connection.query(sQuery, function(error, results, fields){
     if(error){
       res.status(502).send('Erro na busca. Erro: '+error);
       return
     }
-
+    console.log(results);
     jData = JSON.parse(JSON.stringify(results));
 
+    console.log(jData)
     res.status(202).send(jData);
     connection.end();
   });
@@ -490,8 +493,9 @@ app.get('/api/artist/album', (req, res)=>{
 
   connection.connect();
 
-  connection.query(sQuery, function(results, error, fields){
+  connection.query(sQuery, function(error, results,  fields){
     if(error){
+      console.log(error);
       res.status(502).send('Erro na busca. Erro: '+error);
       return
     }
