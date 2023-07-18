@@ -10,13 +10,54 @@ import { Log } from './components/login/login';
 import { LogOut } from './components/logout/logout';
 import { Art } from './components/artist/artist';
 import { Alb } from './components/album/album';
+import { Route, Routes } from 'react-router';
 
 function App() {
   return (
     <div className="App main-color">
-      <NavIn className="nav"/>
-      {/* <MainIn/> */}
-      <Alb/>
+      <NavIn/>
+      <Routes>
+        <Route
+          path='/'
+          element={<MainIn/>}
+        />
+        <Route
+          path='/home'
+          element={<MainIn/>}
+        />
+        <Route
+          path='/search'
+          element={<Search/>}
+        />
+        <Route
+          path='/fav'
+          element={<Fav/>}
+        />
+        <Route
+          path='/profile'
+          element={<Profile/>}
+        />
+        <Route
+          path='/conf'
+          element={<Conf/>}
+        />
+        <Route
+          path='/log'
+          element={<Log/>}
+        />
+        <Route
+          path='/logout'
+          element={<LogOut/>}
+        />
+        <Route
+          path='/art'
+          element={<Art/>}
+        />
+        <Route
+          path='/alb'
+          element={<Alb/>}
+        />
+      </Routes>
     </div>
   );
 }
