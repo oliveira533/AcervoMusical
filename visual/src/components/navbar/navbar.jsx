@@ -8,16 +8,6 @@ import { BiSearchAlt2  } from "react-icons/bi";
 import { BsFillGearFill  } from "react-icons/bs";
 import { MdFavorite  } from "react-icons/md";
 
-import { MainIn } from '../../components/main/main';
-import { Search } from '../../components/search/search';
-import { Fav } from '../../components/favorite/favorite';
-import { Profile } from '../../components/profile/profile';
-import { Conf } from '../../components/config/config';
-import { Log } from '../../components/login/login';
-import { LogOut } from '../../components/logout/logout';
-import { Art } from '../../components/artist/artist';
-import { Alb } from '../../components/album/album';
-
 import { Route, Routes } from 'react-router';
 import { Link } from 'react-router-dom';
 
@@ -30,16 +20,32 @@ export function NavIn(){
             </div>
             <ul className='list1 font-color'>
                 <li className='item-list'>
-                    <Link to="/search">
+                    <Link to="/">
                         <RiHome4Fill /> Home
                     </Link>
                 </li>
-                <li className='item-list'><BiSearchAlt2/> Pesquisar</li>
-                <li className='item-list'><MdFavorite/> Favoritos</li>
+                <li className='item-list'>
+                    <Link to="/search">
+                        <BiSearchAlt2/> Pesquisar
+                    </Link>
+                </li>
+                <li className='item-list'>
+                    <Link to="/fav">
+                        <MdFavorite/> Favoritos
+                    </Link>
+                </li>
             </ul>
             <ul className='list2 font-color'>
-                <li className='item-list'><BsFillGearFill/> Configuração</li>
-                <li className='item-list'><FiLogOut/> Sair</li>
+                <li className='item-list'>
+                    <Link to="/conf">
+                        <BsFillGearFill/> Configuração
+                    </Link>
+                </li>
+                <li className='item-list'>
+                    <Link to="logout">
+                        <FiLogOut/> Sair
+                    </Link>
+                </li>
             </ul>
         </nav>
     )
@@ -53,12 +59,28 @@ export function NavOff(){
             <h2 className='font-color'>User name</h2>
             </div>
             <ul className='list1 font-color'>
-                <li className='item-list'><RiHome4Fill/> Home</li>
-                <li className='item-list'><BiSearchAlt2/> Pesquisar</li>
+                <li className='item-list'>
+                    <Link to="/">
+                        <RiHome4Fill /> Home
+                    </Link>
+                </li>
+                <li className='item-list'>
+                    <Link to="/search">
+                        <BiSearchAlt2/> Pesquisar
+                    </Link>
+                </li>
             </ul>
             <ul className='list2 font-color'>
-                <li className='item-list'><BsFillGearFill/> Configuração</li>
-                <li className='item-list'><FiLogOut/> Sair</li>
+                <li className='item-list'>
+                    <Link to="/conf">
+                        <BsFillGearFill/> Configuração
+                    </Link>
+                </li>
+                <li className='item-list'>
+                    <Link to="logout">
+                        <FiLogOut/> Sair
+                    </Link>
+                </li>
             </ul>
         </nav>
     )
