@@ -15,8 +15,10 @@ export function NavIn(){
     return(
         <nav className='nav sec-color'>
             <div className='user '>
-            <FaUser className='font-color icon-user'/>
-            <h2 className='font-color'>User name</h2>
+                <Link className='link-src-user' to="/profile">
+                    <FaUser className='font-color icon-user'/>
+                    <h2 className='font-color'>User name</h2>
+                </Link>
             </div>
             <ul className='list1 font-color'>
                 <li className='item-list'>
