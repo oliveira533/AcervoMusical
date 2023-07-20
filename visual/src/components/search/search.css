@@ -11,17 +11,22 @@
     border-radius: 20px;
     display: flex;
     justify-content: flex-start;
+    align-items: center;
 }
-.img{
-    height: 30px;
+.img-src{
+    height: 10%;
     border: 0;
     cursor: pointer;
 }
-.txb{
+.txb-src{
     width: 90%;
     padding: 5px;
     font-size: 25px;
 }
-.txb:focus{
+.txb-src:focus{
     outline: none;
+}
+.btn-src{
+    width: 10%;
+    height: 100%;
 }

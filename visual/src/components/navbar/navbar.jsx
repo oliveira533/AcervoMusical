@@ -20,29 +20,29 @@ export function NavIn(){
             </div>
             <ul className='list1 font-color'>
                 <li className='item-list'>
-                    <Link to="/">
+                    <Link className='link-src' to="/">
                         <RiHome4Fill /> Home
                     </Link>
                 </li>
                 <li className='item-list'>
-                    <Link to="/search">
+                    <Link className='link-src' to="/search">
                         <BiSearchAlt2/> Pesquisar
                     </Link>
                 </li>
                 <li className='item-list'>
-                    <Link to="/fav">
+                    <Link className='link-src' to="/fav">
                         <MdFavorite/> Favoritos
                     </Link>
                 </li>
             </ul>
             <ul className='list2 font-color'>
                 <li className='item-list'>
-                    <Link to="/conf">
+                    <Link className='link-src' to="/conf">
                         <BsFillGearFill/> Configuração
                     </Link>
                 </li>
                 <li className='item-list'>
-                    <Link to="logout">
+                    <Link className='link-src' to="logout">
                         <FiLogOut/> Sair
                     </Link>
                 </li>
@@ -60,24 +60,24 @@ export function NavOff(){
             </div>
             <ul className='list1 font-color'>
                 <li className='item-list'>
-                    <Link to="/">
+                    <Link className='link-src' to="/">
                         <RiHome4Fill /> Home
                     </Link>
                 </li>
                 <li className='item-list'>
-                    <Link to="/search">
+                    <Link className='link-src' to="/search">
                         <BiSearchAlt2/> Pesquisar
                     </Link>
                 </li>
             </ul>
             <ul className='list2 font-color'>
                 <li className='item-list'>
-                    <Link to="/conf">
+                    <Link className='link-src' to="/conf">
                         <BsFillGearFill/> Configuração
                     </Link>
                 </li>
                 <li className='item-list'>
-                    <Link to="logout">
+                    <Link className='link-src' to="logout">
                         <FiLogOut/> Sair
                     </Link>
                 </li>

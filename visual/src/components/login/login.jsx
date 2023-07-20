@@ -8,12 +8,12 @@ export function Log(){
             <div className="form-log sec-color font-color">
                 <div className="box">
                     <label>Email</label><br/>
-                    <input className="btn-color2" placeholder="example@email.com" type="emai"/>
+                    <input className="btn-color2 inp-log" placeholder="example@email.com" type="emai"/>
                 </div>
                 <br/>
                 <div className="box">
                     <label>Senha</label><br/>
-                    <input className="btn-color2" placeholder="senha" type="password"/>
+                    <input className="btn-color2 inp-log" placeholder="senha" type="password"/>
                 </div>
                 <br/>
                 <a href="#" className="link">Esqueci a Senha</a><br/>

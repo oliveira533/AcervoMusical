@@ -8,8 +8,8 @@ export function Search(){
     return(
         <div className="content main-color font-color">
             <div className="search sec-color">
-                <input type="text" className="background txb font-color" placeholder="Pesquisa"/>
-                <button className="background"><BiSearchAlt2 className="font-color img"/></button>
+                <input type="text" className="background txb-src font-color" placeholder="Pesquisa"/>
+                <button className="background btn-src"><BiSearchAlt2 className="font-color img-src"/></button>
             </div>
             <div className="wrap">
                 <Item/>
