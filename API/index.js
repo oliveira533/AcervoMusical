@@ -323,7 +323,7 @@ app.get('/api/random/music', (req, res) =>{
   fnMax(function(qTotal){
     var value = []
   
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 5; i++) {
       let nRandom = parseInt(Math.random() * (qTotal - 1) + 1);
       if(value[i] == undefined){
         if(value[i-1] == undefined){
@@ -347,7 +347,7 @@ app.get('/api/random/music', (req, res) =>{
       }  
     }
 
-    let sQuery = 'SELECT * FROM music WHERE MSCID = '+value[0]+' OR MSCID = '+value[1]+' OR MSCID = '+value[2]+' OR MSCID = '+ value[3];
+    let sQuery = 'SELECT * FROM music WHERE MSCID = '+value[0]+' OR MSCID = '+value[1]+' OR MSCID = '+value[2]+' OR MSCID = '+ value[3]+' OR MSCID = '+ value[4];
 
     let connection = mysql.createConnection({
       host : 'localhost',
