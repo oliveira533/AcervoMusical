@@ -6,7 +6,7 @@ mysql = require('mysql');
 const app = express();
 
 // porta que vou utilizar
-const PORT = 3000;
+const PORT = 8000;
 
 // configurando o bodyparser para requisições JSON
 app.use(bodyParser.json());
