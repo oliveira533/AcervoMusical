@@ -11,6 +11,10 @@ const PORT = 8000;
 // configurando o bodyparser para requisições JSON
 app.use(bodyParser.json());
 
+var express = require('express')
+var cors = require('cors')
+ 
+app.use(cors())
 
 
 // Rota para criar usuário USR-ADD
