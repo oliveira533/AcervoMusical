@@ -7,8 +7,6 @@ import { RiHome4Fill  } from "react-icons/ri";
 import { BiSearchAlt2  } from "react-icons/bi";
 import { BsFillGearFill  } from "react-icons/bs";
 import { MdFavorite  } from "react-icons/md";
-
-import { Route, Routes } from 'react-router';
 import { Link } from 'react-router-dom';
 
 export function NavIn(){

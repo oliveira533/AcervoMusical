@@ -9,38 +9,6 @@ export function MainIn(){
             <h2 className="title">Principais escolhas</h2>
             <div className="wrap">
                 <Item/>
-                <Item/>
-                <Item/>
-                <Item/>
-                <Item/>
-                <Item/>
-                <Item/>
-                <Item/>
-                <Item/>
-                <Item/>
-                <Item/>
-                <Item/>
-                <Item/>
-                <Item/>
-                <Item/>
-            </div>
-            <h2 className="title">Novidades</h2>
-            <div className="wrap">
-                <Item/>
-                <Item/>
-                <Item/>
-                <Item/>
-                <Item/>
-                <Item/>
-                <Item/>
-                <Item/>
-                <Item/>
-                <Item/>
-                <Item/>
-                <Item/>
-                <Item/>
-                <Item/>
-                <Item/>
             </div>
         </div>
     )
