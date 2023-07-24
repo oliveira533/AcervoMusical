@@ -4,6 +4,17 @@ import '../../colors.css';
 import Item from "./item/item.jsx";
 
 export function MainIn(){
+    
+    const url = 'http://localhost:8000/api/random/music'
+    fetch(url).then(response =>{
+        return response.json();
+          }).then(data =>
+          {
+            console.log(data)
+          })
+
+        
+
     return(
         <div className="content font-color">
             <h2 className="title">Principais escolhas</h2>
