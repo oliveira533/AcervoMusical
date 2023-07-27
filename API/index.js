@@ -351,6 +351,8 @@ app.get('/api/random/music', (req, res) =>{
       }  
     }
 
+    console.log(value)
+
     let sQuery = 'SELECT * FROM music WHERE MSCID = '+value[0]+' OR MSCID = '+value[1]+' OR MSCID = '+value[2]+' OR MSCID = '+ value[3]+' OR MSCID = '+ value[4];
 
     let connection = mysql.createConnection({
