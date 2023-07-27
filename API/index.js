@@ -327,7 +327,7 @@ app.get('/api/random/music', (req, res) =>{
   fnMax(function(qTotal){
     var value = []
   
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 30; i++) {
       let nRandom = parseInt(Math.random() * (qTotal - 1) + 1);
       if(value[i] == undefined){
         if(value[i-1] == undefined){
@@ -353,7 +353,7 @@ app.get('/api/random/music', (req, res) =>{
 
     console.log(value)
 
-    let sQuery = 'SELECT * FROM music WHERE MSCID = '+value[0]+' OR MSCID = '+value[1]+' OR MSCID = '+value[2]+' OR MSCID = '+ value[3]+' OR MSCID = '+ value[4];
+    let sQuery = 'SELECT * FROM music WHERE ' +'MSCID = ' + value[0] +' OR MSCID = ' + value[1] +' OR MSCID = ' + value[2] +' OR MSCID = ' + value[3] +' OR MSCID = ' + value[4] + ' OR MSCID = ' + value[5] +  ' OR MSCID = ' + value[6] +  ' OR MSCID = ' + value[7] +  ' OR MSCID = ' + value[8] +  ' OR MSCID = ' + value[9] +  ' OR MSCID = ' + value[10] +  ' OR MSCID = ' + value[11] +  ' OR MSCID = ' + value[12] +  ' OR MSCID = ' + value[13] +  ' OR MSCID = ' + value[14] +  ' OR MSCID = ' + value[15] +  ' OR MSCID = ' + value[16] +  ' OR MSCID = ' + value[17] +  ' OR MSCID = ' + value[18] +  ' OR MSCID = ' + value[19] +  ' OR MSCID = ' + value[20] +  ' OR MSCID = ' + value[21] +  ' OR MSCID = ' + value[22] +  ' OR MSCID = ' + value[23] +  ' OR MSCID = ' + value[24] +  ' OR MSCID = ' + value[25] +  ' OR MSCID = ' + value[26] +  ' OR MSCID = ' + value[27] +' OR MSCID = ' + value[28] +  ' OR MSCID = ' + value[29];
 
     let connection = mysql.createConnection({
       host : 'localhost',
